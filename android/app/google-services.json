@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "723382070575",
+    "project_id": "busaostm",
+    "storage_bucket": "busaostm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723382070575:android:88513fa510c017ce6685da",
+        "android_client_info": {
+          "package_name": "com.busaostm.tagdev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723382070575-mra2p12m8v2ha61i1dfhue9cc49umvho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.busaostm.tagdev",
+            "certificate_hash": "a51ebb8162ded8a3804695e466032855ca96c469"
+          }
+        },
+        {
+          "client_id": "723382070575-dh14urq3m07e5nijm4aq65g9dp51m90c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQxLbEz0vImixlpoxD9QopDTdtWhk3qmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723382070575-dh14urq3m07e5nijm4aq65g9dp51m90c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
