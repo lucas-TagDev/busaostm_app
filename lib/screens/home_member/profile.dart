@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:numpakbis/models/user.dart';
+import 'package:numpakbis/screens/authenticate/sign_in.dart';
 import 'package:numpakbis/services/auth.dart';
 
 class Profile extends StatefulWidget {
@@ -9,15 +10,14 @@ class Profile extends StatefulWidget {
   Profile({ this.userData });
   @override
   _ProfileState createState() => _ProfileState();
+
 }
 
 class _ProfileState extends State<Profile> {
   final AuthService _auth = AuthService();
-
   void _changePassword(String password) async{
     //Create an instance of the current user.
     FirebaseUser user = await FirebaseAuth.instance.currentUser();
-
     //Pass in the password to updatePassword.
     user.updatePassword(password).then((_){
       print("Senha alterada com sucesso");
@@ -26,8 +26,6 @@ class _ProfileState extends State<Profile> {
       //This might happen, when the wrong password is in, the user isn't found, or if the user hasn't logged in recently.
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -189,6 +187,68 @@ These terms and conditions are effective as of 2020-05-31
               Card(
                 margin: EdgeInsets.all(15),
                 child: Column(
+                  //mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    new Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    ),
+                    Text('VOCÊ PRECISA LOGAR EM UMA CONTA PRIMEIRO'),
+                    new Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20.0),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(15.0),
+
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          RaisedButton(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(28),
+                            ),
+                            color: Colors.deepPurpleAccent,
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.all(15.0),
+                                      child: Row(
+                                        children: [
+                                          Text("Fazer Login", style: TextStyle(color: Colors.white, fontSize: 16), textAlign: TextAlign.center,),
+                                          Icon(Icons.exit_to_app, size: 30, color: Colors.white,),
+                                        ],
+                                      ),
+                                    ),
+
+                                  ],
+                                )
+
+                              ],
+                            ),
+                            onPressed: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => SignIn()),
+                              );
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(height: 80.0),//SizedBox(height: 20.0),
+                  ],
+                ),
+              ),
+
+              Card(
+                margin: EdgeInsets.all(15),
+                child: Column(
                   children: <Widget>[
                     SizedBox(height: 15,),
                     FaIcon(
@@ -197,6 +257,7 @@ These terms and conditions are effective as of 2020-05-31
                       color: Colors.blueAccent,
                     ),
                     SizedBox(height: 15,),
+
                     Text(widget.userData.name,
                       style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18, color: Colors.black54),
                     ),
@@ -231,6 +292,7 @@ These terms and conditions are effective as of 2020-05-31
                   ],
                 ),
               ),
+
               Card(
                 margin: EdgeInsets.all(15),
                 child: Column(

@@ -1,5 +1,8 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:numpakbis/screens/authenticate/sign_up.dart';
+import 'package:numpakbis/screens/home_member/home_member.dart';
 import 'package:numpakbis/services/auth.dart';
 import 'package:numpakbis/shared/constant.dart';
 import 'package:numpakbis/shared/loading_logo.dart';
@@ -31,10 +34,10 @@ class _SignInState extends State<SignIn> {
     }
 
     return loading ? LoadingLogo() : Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Colors.deepPurple,
       appBar: AppBar(
-        title: Text('ENTRAR',style: TextStyle(color: Colors.lightBlue),),
-        backgroundColor: Colors.grey[100],
+        //title: Text('ENTRAR',style: TextStyle(color: Colors.lightBlue),),
+        backgroundColor: Colors.deepPurple,
         elevation: 0,
       ),
       body: Container(
@@ -58,8 +61,18 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                   SizedBox(height: 20,),
+
                   TextFormField( // email form
-                    decoration: textInputDecoration.copyWith(hintText: 'Seu e-mail'),
+                    //decoration: textInputDecoration.copyWith(hintText: 'Seu e-mail',),
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                        focusColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        hintText: 'Digite seu e-mail',
+                        fillColor: Colors.white, filled: true
+                    ),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                     focusNode: _emailFocus,
@@ -75,7 +88,16 @@ class _SignInState extends State<SignIn> {
                   ),
                   SizedBox(height: 20),
                   TextFormField( // pass form
-                    decoration: textInputDecoration.copyWith(hintText: 'Senha'),
+                    //decoration: textInputDecoration.copyWith(hintText: 'Senha', border: ),
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      focusColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                      hintText: 'Sua senha',
+                      fillColor: Colors.white, filled: true
+                    ),
                     textInputAction: TextInputAction.done,
                     focusNode: _passwordFocus,
                     onFieldSubmitted: (value) async{
@@ -121,12 +143,34 @@ class _SignInState extends State<SignIn> {
                           }
                         }
                       },
-                      color: Colors.lightBlue,
+                      color: Colors.deepPurpleAccent,
                       child: Text(
-                        'ACESSAR',
+                        'ENTRAR',
                         style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+
+                      FlatButton(
+                        onPressed: () async {
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => HomeMember()),
+                          );
+                        },
+                        child: Text(
+                          'Vou criar depois',
+                          style: TextStyle(
+                            color: Colors.white,
+                            decoration: TextDecoration.underline,
+                          ),
+
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(height: 12),
                   Text(
@@ -164,7 +208,7 @@ class _SignInState extends State<SignIn> {
             child: Text(
                 'Criar conta agora',
               style: TextStyle(
-                color: Colors.lightBlue,
+                color: Colors.white,
                 decoration: TextDecoration.underline,
               ),
 
