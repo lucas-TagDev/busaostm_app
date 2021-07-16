@@ -1,8 +1,8 @@
-# numpakbis
+# Busão STM App
 
-GPS Tracking Socket Server App
+Localização em tempo real para transporte público
 
-## Getting Started
+## About this project
 
 This project is a starting point for a Flutter application.
 
