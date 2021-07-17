@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:numpakbis/screens/authenticate/sign_up.dart';
 import 'package:numpakbis/screens/home_member/home_member.dart';
+import 'package:numpakbis/screens/home_member/use_not_login.dart';
 import 'package:numpakbis/services/auth.dart';
 import 'package:numpakbis/shared/constant.dart';
 import 'package:numpakbis/shared/loading_logo.dart';
@@ -158,7 +159,7 @@ class _SignInState extends State<SignIn> {
                         onPressed: () async {
                           await Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => HomeMember()),
+                            MaterialPageRoute(builder: (context) => UserLoginNo()),
                           );
                         },
                         child: Text(

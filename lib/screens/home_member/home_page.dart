@@ -304,11 +304,26 @@ class _HomePageState extends State<HomePage> {
                   });
                 },
               ),
-              floatingActionButton: FloatingActionButton(
+
+              /*floatingActionButton: FloatingActionButton(
                   child: Icon(Icons.location_searching),
                   onPressed: (){
                     _getCurrentLocation();
                   }),
+            ),*/
+              floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+            floatingActionButton: Container(
+              padding: EdgeInsetsDirectional.only(top: 20.0),
+                child:FloatingActionButton(
+                  child: Icon(Icons.my_location), //child widget inside this button
+                  shape: CircleBorder(),
+                  backgroundColor: Colors.deepPurple,
+                  onPressed: (){
+                    _getCurrentLocation();
+                    //task to execute when this button is pressed
+                  },
+                ),
+            )
             ),
           );
         }

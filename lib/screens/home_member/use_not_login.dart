@@ -15,14 +15,14 @@ import 'package:numpakbis/services/auth.dart';
 import 'package:provider/provider.dart';
 
 
-class HomeMember extends StatefulWidget {
+class UserLoginNo extends StatefulWidget {
   final UserData userData;
-  HomeMember({ this.userData });
+  UserLoginNo({ this.userData });
   @override
-  _HomeMemberState createState() => _HomeMemberState();
+  _UserNotLogin createState() => _UserNotLogin();
 }
 
-class _HomeMemberState extends State<HomeMember> {
+class _UserNotLogin extends State<UserLoginNo> {
 
   final _scaffoldKey = new GlobalKey<ScaffoldState>();
   final AuthService _auth = AuthService();
@@ -51,7 +51,7 @@ class _HomeMemberState extends State<HomeMember> {
 
   Future _onNavBarTapped(int index) async{
     return await setState(() {
-        _selectedTabIndex = index;
+      _selectedTabIndex = index;
     });
   }
 
@@ -79,9 +79,9 @@ class _HomeMemberState extends State<HomeMember> {
       if(jsonData != null){
         ReceiveMessage data = new ReceiveMessage.fromJson(jsonData);
         await _onCalculateDistance(double.parse(data.message.latitude),
-          double.parse(data.message.longitude),
-          double.parse(data.message.halteLat),
-          double.parse(data.message.halteLong)
+            double.parse(data.message.longitude),
+            double.parse(data.message.halteLat),
+            double.parse(data.message.halteLong)
         );
         Bus tempBus = new Bus(
           name: data.message.nameBus,
@@ -164,11 +164,7 @@ class _HomeMemberState extends State<HomeMember> {
       BottomNavigationBarItem(
         title: Text('Rotas'),
         icon: Icon(Icons.directions_bus),
-      ),
-      BottomNavigationBarItem(
-        title: Text('Perfil'),
-        icon: Icon(Icons.person),
-      ),
+      )
     ];
 
     final _bottomNavBar = BottomNavigationBar(
@@ -205,13 +201,13 @@ class _HomeMemberState extends State<HomeMember> {
     return WillPopScope(
       onWillPop: _onBackPressed,
       child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          backgroundColor: Colors.grey[100],
-          key: _scaffoldKey,
-          appBar: AppBar(
-            title: new Center(child: Text(_pageTitle[_selectedTabIndex], textAlign: TextAlign.center, style: TextStyle(color: Colors.white),),),
-            backgroundColor: Colors.deepPurple,
-            elevation: 1,
+        resizeToAvoidBottomInset: false,
+        backgroundColor: Colors.grey[100],
+        key: _scaffoldKey,
+        appBar: AppBar(
+          title: new Center(child: Text(_pageTitle[_selectedTabIndex], textAlign: TextAlign.center, style: TextStyle(color: Colors.white),),),
+          backgroundColor: Colors.deepPurple,
+          elevation: 1,
           /*actions: <Widget>[
             FlatButton.icon(
               icon: Icon(Icons.person, color: Colors.redAccent,),
@@ -222,11 +218,11 @@ class _HomeMemberState extends State<HomeMember> {
             ),
           ],*/
         ),
-        body: /*Center(
+        /*body: Center(
           child: _listPage[_selectedTabIndex],
         ),
         bottomNavigationBar: _bottomNavBar,*/
-        Container(
+        body: Container(
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: <Widget>[
@@ -262,11 +258,11 @@ class _HomeMemberState extends State<HomeMember> {
                           bottomLeft: Radius.circular(0),
                           bottomRight: Radius.circular(0)),
                       child: Container(
-                          child: _bottomNavBar
+                        child: _bottomNavBar
                       )),
                 )
               ],
-            ))
+            )),
       ),
     );
   }

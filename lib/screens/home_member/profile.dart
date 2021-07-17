@@ -184,67 +184,6 @@ These terms and conditions are effective as of 2020-05-31
       child: SingleChildScrollView(
         child: Column(
             children: <Widget>[
-              Card(
-                margin: EdgeInsets.all(15),
-                child: Column(
-                  //mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    new Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    ),
-                    Text('VOCÊ PRECISA LOGAR EM UMA CONTA PRIMEIRO'),
-                    new Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20.0),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(15.0),
-
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          RaisedButton(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(28),
-                            ),
-                            color: Colors.deepPurpleAccent,
-                            child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.all(15.0),
-                                      child: Row(
-                                        children: [
-                                          Text("Fazer Login", style: TextStyle(color: Colors.white, fontSize: 16), textAlign: TextAlign.center,),
-                                          Icon(Icons.exit_to_app, size: 30, color: Colors.white,),
-                                        ],
-                                      ),
-                                    ),
-
-                                  ],
-                                )
-
-                              ],
-                            ),
-                            onPressed: () async {
-                              await Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => SignIn()),
-                              );
-                            },
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(height: 80.0),//SizedBox(height: 20.0),
-                  ],
-                ),
-              ),
 
               Card(
                 margin: EdgeInsets.all(15),
@@ -254,7 +193,7 @@ These terms and conditions are effective as of 2020-05-31
                     FaIcon(
                       FontAwesomeIcons.solidUserCircle,
                       size: 100,
-                      color: Colors.blueAccent,
+                      color: Colors.deepPurple,
                     ),
                     SizedBox(height: 15,),
 
