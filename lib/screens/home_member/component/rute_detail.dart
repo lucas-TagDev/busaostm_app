@@ -38,7 +38,7 @@ class _RuteDetailState extends State<RuteDetail> {
   Completer<GoogleMapController> _controller = Completer();
   GoogleMapController mapController;
   LatLng _lastMapPosition = _center;
-  static const LatLng _center = const LatLng(-2.4426063, -54.728579);
+  static const LatLng _center = const LatLng(-2.4327232696276355, -54.72109031637642);
   Position _currentPosition;
   Circle _circle;
   BitmapDescriptor iconMe;
@@ -212,7 +212,7 @@ class _RuteDetailState extends State<RuteDetail> {
         circleId: CircleId("Você está aqui"),
         radius: pos.accuracy,
         zIndex: 1,
-        strokeColor: Colors.blue,
+        strokeColor: Colors.deepPurpleAccent,
         strokeWidth: 0,
         center: LatLng(pos.latitude, pos.longitude ),
         fillColor: Colors.blue.withAlpha(60),
@@ -341,7 +341,7 @@ class _RuteDetailState extends State<RuteDetail> {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: Icon(Icons.arrow_back, color: Colors.lightBlue, size: 35,),
+                    child: Icon(Icons.arrow_back, color: Colors.deepPurpleAccent, size: 35,),
                   ),
                 ),
               ),
@@ -359,7 +359,8 @@ class _RuteDetailState extends State<RuteDetail> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
                             FloatingActionButton(
-                                child: Icon(Icons.location_searching),
+                                child: Icon(Icons.my_location),
+                                backgroundColor: Colors.deepPurple,
                                 onPressed: (){
                                   _getCurrentLocation();
                                 }),

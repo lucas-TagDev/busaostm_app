@@ -55,12 +55,12 @@ class _BusStopDetailState extends State<BusStopDetail> {
         SizedBox(height: 50.0),
         Icon(
           Icons.airport_shuttle,
-          color: Colors.lightBlue,
+          color: Colors.deepPurpleAccent,
           size: 40.0,
         ),
         Container(
           width: 120.0,
-          child: new Divider(color: Colors.lightBlue, thickness: 3,
+          child: new Divider(color: Colors.deepPurpleAccent, thickness: 3,
           ),
         ),
         SizedBox(height: 10.0),
@@ -158,7 +158,7 @@ class _BusStopDetailState extends State<BusStopDetail> {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(Icons.arrow_back, color: Colors.lightBlue, size: 35,),
+            child: Icon(Icons.arrow_back, color: Colors.deepPurpleAccent, size: 35,),
           ),
         )
       ],

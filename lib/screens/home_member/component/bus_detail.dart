@@ -126,7 +126,7 @@ class _BusDetailState extends State<BusDetail> {
       _polylines.add(Polyline(
           width: 5, // set the width of the polylines
           polylineId: PolylineId("poly"),
-          color: Colors.blue,
+          color: Colors.deepPurpleAccent,
           points: polylineCoordinates
       ));
     });
@@ -227,7 +227,7 @@ class _BusDetailState extends State<BusDetail> {
         circleId: CircleId("Você está aqui"),
         radius: pos.accuracy,
         zIndex: 1,
-        strokeColor: Colors.blue,
+        strokeColor: Colors.deepPurpleAccent,
         strokeWidth: 0,
         center: LatLng(pos.latitude, pos.longitude ),
         fillColor: Colors.blue.withAlpha(60),
@@ -342,7 +342,7 @@ class _BusDetailState extends State<BusDetail> {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: Icon(Icons.arrow_back, color: Colors.lightBlue, size: 35,),
+                child: Icon(Icons.arrow_back, color: Colors.deepPurpleAccent, size: 35,),
               ),
             ),
           ),
@@ -360,7 +360,8 @@ class _BusDetailState extends State<BusDetail> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       FloatingActionButton(
-                        child: Icon(Icons.location_searching),
+                        child: Icon(Icons.my_location),
+                          backgroundColor: Colors.deepPurple,
                           onPressed: (){
                             _getCurrentLocation();
                         }),

@@ -151,6 +151,9 @@ class _SignInState extends State<SignIn> {
                       ),
                     ),
                   ),
+                  Container(
+                    padding: EdgeInsets.all(10.0),
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -197,6 +200,7 @@ class _SignInState extends State<SignIn> {
               'Ainda não se registrou?',
             style: TextStyle(
               fontSize: 14,
+              color: Colors.white
             ),
           ),
           FlatButton(
@@ -207,7 +211,7 @@ class _SignInState extends State<SignIn> {
               );
             },
             child: Text(
-                'Criar conta agora',
+                'Criar uma conta',
               style: TextStyle(
                 color: Colors.white,
                 decoration: TextDecoration.underline,

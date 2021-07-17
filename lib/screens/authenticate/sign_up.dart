@@ -36,9 +36,9 @@ class _SignUpState extends State<SignUp> {
     return loading ? LoadingLogo() : Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Text('CRIAR CONTA', style: TextStyle(color: Colors.lightBlue),),
+        //title: Text('CRIAR CONTA', style: TextStyle(color: Colors.lightBlue),),
         iconTheme: IconThemeData(
-          color: Colors.lightBlue,
+          color: Colors.deepPurpleAccent,
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -56,7 +56,16 @@ class _SignUpState extends State<SignUp> {
                   Icon(Icons.directions_bus,color: Colors.lightBlue, size: 120,),*/
                   SizedBox(height: 20,),
                   TextFormField( // email form
-                    decoration: textInputDecoration.copyWith(hintText: 'E-mail'),
+                    //decoration: textInputDecoration.copyWith(hintText: 'E-mail'),
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                        focusColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        hintText: 'Digite seu e-mail',
+                        fillColor: Colors.white, filled: true
+                    ),
                     textInputAction: TextInputAction.next,
                     focusNode: _emailFocus,
                     onFieldSubmitted: (term){
@@ -72,7 +81,16 @@ class _SignUpState extends State<SignUp> {
                   ),
                   SizedBox(height: 20),
                   TextFormField( // pass form
-                    decoration: textInputDecoration.copyWith(hintText: 'Senha'),
+                    //decoration: textInputDecoration.copyWith(hintText: 'Senha'),
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                        focusColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        hintText: 'Digite uma senha',
+                        fillColor: Colors.white, filled: true
+                    ),
                     textInputAction: TextInputAction.next,
                     focusNode: _passwordFocus,
                     onFieldSubmitted: (term){
@@ -88,7 +106,16 @@ class _SignUpState extends State<SignUp> {
                   ),
                   SizedBox(height: 20,),
                   TextFormField( // name form
-                    decoration: textInputDecoration.copyWith(hintText: 'Nome Completo'),
+                    //decoration: textInputDecoration.copyWith(hintText: 'Nome Completo'),
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                        focusColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        hintText: 'Nome completo',
+                        fillColor: Colors.white, filled: true
+                    ),
                     textInputAction: TextInputAction.next,
                     focusNode: _namaFocus,
                     onFieldSubmitted: (term){
@@ -103,7 +130,16 @@ class _SignUpState extends State<SignUp> {
                   ),
                   SizedBox(height: 20,),
                   TextFormField( // No HP form
-                    decoration: textInputDecoration.copyWith(hintText: 'Telefone'),
+                    //decoration: textInputDecoration.copyWith(hintText: 'Telefone'),
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                        focusColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(18),
+                        ),
+                        hintText: 'Telefone',
+                        fillColor: Colors.white, filled: true
+                    ),
                     keyboardType: TextInputType.phone,
                     textInputAction: TextInputAction.done,
                     focusNode: _noHPFocus,
@@ -151,10 +187,10 @@ class _SignUpState extends State<SignUp> {
                           }
                         }
                       },
-                      color: Colors.lightBlue,
+                      color: Colors.deepPurpleAccent,
                       child: Text(
-                        'CRIAR MINHA CONTA',
-                        style: TextStyle(color: Colors.white,fontSize: 16),
+                        'CRIAR CONTA',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
                       ),
                     ),
                   ),
@@ -191,7 +227,7 @@ class _SignUpState extends State<SignUp> {
             child: Text(
               'Entrar agora',
               style: TextStyle(
-                color: Colors.lightBlue,
+                color: Colors.deepPurpleAccent,
                 decoration: TextDecoration.underline,
               ),
 

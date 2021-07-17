@@ -66,7 +66,7 @@ class _RuteBusStopDetailState extends State<RuteBusStopDetail> {
         ),
         Container(
           width: 120.0,
-          child: new Divider(color: Colors.lightBlue, thickness: 3,
+          child: new Divider(color: Colors.deepPurpleAccent, thickness: 3,
           ),
         ),
         SizedBox(height: 10.0),
@@ -164,7 +164,7 @@ class _RuteBusStopDetailState extends State<RuteBusStopDetail> {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(Icons.arrow_back, color: Colors.lightBlue, size: 35,),
+            child: Icon(Icons.arrow_back, color: Colors.deepPurpleAccent, size: 35,),
           ),
         )
       ],
