@@ -4,7 +4,7 @@ class LoadingLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[100],
+      color: Colors.deepPurple,
       child: Center(
         child:  Container(
           width: 250,

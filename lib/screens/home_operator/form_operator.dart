@@ -105,6 +105,7 @@ class _FormOperatorState extends State<FormOperator> {
 
     return loading ? LoadingLogo() : Scaffold(
       body: Container(
+        color: Colors.deepPurple,
         child: Form(
           key: _formKey,
           child: Padding(
@@ -139,6 +140,9 @@ class _FormOperatorState extends State<FormOperator> {
                                 width: 250,
                                 child: Text(
                                   snap.data['type'],
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
                                   //style: TextStyle(color: Color(0xff11b719)),
                                 ),
                               ),
@@ -152,10 +156,11 @@ class _FormOperatorState extends State<FormOperator> {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(20,0,0,0),
                               child: Icon(FontAwesomeIcons.road,
-                                  size: 25.0, color: Colors.blueAccent),
+                                  size: 25.0, color: Colors.white),
                             ),
                             SizedBox(width: 30.0),
                             DropdownButton<TypeBus>(
+                              dropdownColor: Colors.black,
                               items: typeItems,
                               onChanged: (TypeBus val) {
                                 setState(() {
@@ -173,6 +178,9 @@ class _FormOperatorState extends State<FormOperator> {
                               isExpanded: false,
                               hint: new Text(
                                 "Grupo",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
                                 //style: TextStyle(color: Color(0xff11b719)),
                               ),
                             ),
@@ -198,6 +206,9 @@ class _FormOperatorState extends State<FormOperator> {
                                 width: 250,
                                 child: Text(
                                   snap.data['noPlat'],
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
                                   //style: TextStyle(color: Color(0xff11b719)),
                                 ),
                               ),
@@ -211,10 +222,11 @@ class _FormOperatorState extends State<FormOperator> {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(20,0,0,0),
                               child: Icon(FontAwesomeIcons.busAlt,
-                                  size: 25.0, color: Colors.blueAccent),
+                                  size: 25.0, color: Colors.white),
                             ),
                             SizedBox(width: 30.0),
                             DropdownButton<PlatBus>(
+                              dropdownColor: Colors.black,
                               items: platItems,
                               onChanged: (PlatBus val) {
                                 setState(() {
@@ -230,6 +242,9 @@ class _FormOperatorState extends State<FormOperator> {
                               isExpanded: false,
                               hint: new Text(
                                 "Identificação do veículo",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
                                 //style: TextStyle(color: Color(0xff11b719)),
                               ),
                             ),
@@ -250,10 +265,14 @@ class _FormOperatorState extends State<FormOperator> {
                           DocumentSnapshot snap = snapshot.data.documents[i];
                           ruteItems.add(
                             DropdownMenuItem<RuteBus>(
+
                               child: SizedBox(
                                 width: 250,
                                 child: Text(
                                   snap.data['rute_name'],
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
                                   //style: TextStyle(color: Color(0xff11b719)),
                                 ),
                               ),
@@ -267,10 +286,13 @@ class _FormOperatorState extends State<FormOperator> {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(20,0,0,0),
                               child: Icon(FontAwesomeIcons.route,
-                                  size: 25.0, color: Colors.blueAccent),
+                                  size: 25.0, color: Colors.white),
                             ),
+
                             SizedBox(width: 30.0),
                             DropdownButton<RuteBus>(
+                              dropdownColor: Colors.black,
+                              focusColor: Colors.white,
                               items: ruteItems,
                               onChanged: (RuteBus val) {
                                 setState(() {
@@ -285,8 +307,12 @@ class _FormOperatorState extends State<FormOperator> {
                               isExpanded: false,
                               hint: new Text(
                                 "Selecionar rota",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
                                 //style: TextStyle(color: Color(0xff11b719)),
                               ),
+
                             ),
                           ],
                         );
@@ -310,6 +336,9 @@ class _FormOperatorState extends State<FormOperator> {
                                   width: 250,
                                   child: Text(
                                     snap.data['name'],
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
                                     //style: TextStyle(color: Color(0xff11b719)),
                                   ),
                                 ),
@@ -325,10 +354,11 @@ class _FormOperatorState extends State<FormOperator> {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(20,0,0,0),
                               child: Icon(FontAwesomeIcons.mapMarkedAlt,
-                                  size: 25.0, color: Colors.blueAccent),
+                                  size: 25.0, color: Colors.white),
                             ),
                             SizedBox(width: 30.0),
                             DropdownButton<RuteHalteBus>(
+                              dropdownColor: Colors.black,
                               items: halteItems,
                               onChanged: (RuteHalteBus val) {
                                 setState(() {
@@ -342,6 +372,9 @@ class _FormOperatorState extends State<FormOperator> {
                               isExpanded: false,
                               hint: new Text(
                                 "Parada de início",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ],
@@ -355,7 +388,7 @@ class _FormOperatorState extends State<FormOperator> {
 
                 Container(
                   width: MediaQuery.of(context).size.width * 0.8,
-                  child: new Divider(color: Colors.grey[300], thickness: 3,
+                  child: new Divider(color: Colors.deepPurpleAccent, thickness: 3,
 
                   ),
                 ),

@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool rememberMe = false;
   GoogleMapController _controller;
   InfoWidgetRoute _infoWidgetRoute;
   StreamSubscription _mapIdleSubscription;
@@ -159,6 +160,16 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  void _onRememberMeChanged(bool newValue) => setState(() {
+    rememberMe = newValue;
+    setState(() {});
+    if (rememberMe == false) {
+
+    } else {
+
+    }
+  });
+
   _getLastKnownLat() async {
     Position _position = await Geolocator().getLastKnownPosition(desiredAccuracy: LocationAccuracy.high);
     return _position.latitude.toString();
@@ -175,89 +186,95 @@ class _HomePageState extends State<HomePage> {
 
 /*    String _lat = "-7.797068";
     String _long = "110.370529";*/
+
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance.collection("halte_bus").snapshots(),
       builder: (context, snapshot){
+        //Aqui que carrega o mapa
         if (!snapshot.hasData){
           return LoadingLogo();
-        } else{
-          for (int i = 0; i < snapshot.data.documents.length; i++) {
-            DocumentSnapshot snap = snapshot.data.documents[i];
-            var _text = snap.data['rute'].split(',');
-            _points.add(PointObject(
-              location: LatLng(double.parse(snap.data['latitude']), double.parse(snap.data['longitude'])),
-              child: Card(
-                child: ListTile(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-                 /* leading: Container(
+        }else{
+          if( rememberMe == false){
+            print('ok kkkkkkkk');
+
+          }else{
+            for (int i = 0; i < snapshot.data.documents.length; i++) {
+              DocumentSnapshot snap = snapshot.data.documents[i];
+              var _text = snap.data['rute'].split(',');
+              _points.add(PointObject(
+                location: LatLng(double.parse(snap.data['latitude']), double.parse(snap.data['longitude'])),
+                child: Card(
+                  child: ListTile(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                    /* leading: Container(
                     decoration: new BoxDecoration(
                         border: new Border(
                             right: new BorderSide(width: 1.0, color: Colors.blueAccent))),
                     child: Icon(Icons.directions_bus, color: Colors.blueAccent, size: 30,),
                   ),*/
-                  title: Text(
-                    snap.data['name'],
-                    style: TextStyle(fontSize: 16),
-                  ),
-                  // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
+                    title: Text(
+                      snap.data['name'],
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    // subtitle: Text("Intermediate", style: TextStyle(color: Colors.white)),
 
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text( getType(snap.data['type']), style: TextStyle( fontSize: 14)),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text( getType(snap.data['type']), style: TextStyle( fontSize: 14)),
 
-                      Container(
-                        height: 28,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Expanded(
-                              child: new ListView.builder(
-                                scrollDirection: Axis.horizontal,
-                                shrinkWrap: true,
-                                itemCount: _text.length,
-                                itemBuilder: (context,index){
-                                  return Padding(
-                                    padding: const EdgeInsets.fromLTRB(0,3,4,5),
-                                    child: Container(
-                                      padding: const EdgeInsets.symmetric(vertical: 1,horizontal: 1),
-                                      decoration: new BoxDecoration(
-                                          border: new Border.all(color: getColor(_text[index].trim())),
-                                          borderRadius: BorderRadius.circular(5.0)),
-                                      child: new Text(
-                                        _text[index].trim(),
-                                        style: TextStyle(color: getColor(_text[index].trim()), fontSize: 14),
-                                        textAlign: TextAlign.center,
+                        Container(
+                          height: 28,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Expanded(
+                                child: new ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemCount: _text.length,
+                                  itemBuilder: (context,index){
+                                    return Padding(
+                                      padding: const EdgeInsets.fromLTRB(0,3,4,5),
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(vertical: 1,horizontal: 1),
+                                        decoration: new BoxDecoration(
+                                            border: new Border.all(color: getColor(_text[index].trim())),
+                                            borderRadius: BorderRadius.circular(5.0)),
+                                        child: new Text(
+                                          _text[index].trim(),
+                                          style: TextStyle(color: getColor(_text[index].trim()), fontSize: 14),
+                                          textAlign: TextAlign.center,
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            )
-                            // Text( _text[0], style: TextStyle(color: Colors.black54)),
-                          ],
+                                    );
+                                  },
+                                ),
+                              )
+                              // Text( _text[0], style: TextStyle(color: Colors.black54)),
+                            ],
+                          ),
                         ),
-                      ),
-                      //Text( halteBus.rute, style: TextStyle(color: Colors.black54)),
-                    ],
+                        //Text( halteBus.rute, style: TextStyle(color: Colors.black54)),
+                      ],
+                    ),
+                    trailing:
+                    Icon(Icons.keyboard_arrow_right, color: Colors.black45, size: 40.0),
+                    onTap: () {
+                      HalteBus _haltebus = new HalteBus(
+                        key: snap.documentID,
+                        name: snap.data['name'],
+                        latitude: snap.data['latitude'],
+                        longitude: snap.data['longitude'],
+                        type: snap.data['type'],
+                        rute: snap.data['rute'],
+                      );
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (context) => BusStopDetail(halteBus: _haltebus)));
+                    },
                   ),
-                  trailing:
-                  Icon(Icons.keyboard_arrow_right, color: Colors.black45, size: 40.0),
-                  onTap: () {
-                    HalteBus _haltebus = new HalteBus(
-                      key: snap.documentID,
-                      name: snap.data['name'],
-                      latitude: snap.data['latitude'],
-                      longitude: snap.data['longitude'],
-                      type: snap.data['type'],
-                      rute: snap.data['rute'],
-                    );
-                    Navigator.push(
-                        context, MaterialPageRoute(builder: (context) => BusStopDetail(halteBus: _haltebus)));
-                  },
                 ),
-              ),
-            ));
+              ));
               _markers.add(Marker(
                 markerId: MarkerId(snap.documentID),
                 icon: iconHalte,
@@ -265,7 +282,9 @@ class _HomePageState extends State<HomePage> {
                 onTap: ()=>_onTap(_points[i]),
               ));
 
+            }
           }
+
           return GestureDetector(
             onTap: () {
               Scaffold.of(context).removeCurrentSnackBar();
@@ -304,7 +323,6 @@ class _HomePageState extends State<HomePage> {
                   });
                 },
               ),
-
               /*floatingActionButton: FloatingActionButton(
                   child: Icon(Icons.location_searching),
                   onPressed: (){
@@ -312,18 +330,30 @@ class _HomePageState extends State<HomePage> {
                   }),
             ),*/
               floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-            floatingActionButton: Container(
-              padding: EdgeInsetsDirectional.only(top: 20.0),
-                child:FloatingActionButton(
-                  child: Icon(Icons.my_location), //child widget inside this button
-                  shape: CircleBorder(),
-                  backgroundColor: Colors.deepPurple,
-                  onPressed: (){
-                    _getCurrentLocation();
-                    //task to execute when this button is pressed
-                  },
-                ),
-            )
+              floatingActionButton: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsetsDirectional.only(top: 20.0),
+                    child:FloatingActionButton(
+                      child: Icon(Icons.my_location), //child widget inside this button
+                      shape: CircleBorder(),
+                      backgroundColor: Colors.deepPurple,
+                      onPressed: (){
+                        _getCurrentLocation();
+                        //task to execute when this button is pressed
+                      },
+                    ),
+                  ),
+                  Checkbox(
+                      value: rememberMe,
+                      onChanged: _onRememberMeChanged,
+                  ),
+                  Text(
+                    'Paradas'
+                  ),
+
+                ],
+              )
             ),
           );
         }

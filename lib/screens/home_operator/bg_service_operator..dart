@@ -26,7 +26,9 @@ class BackgroundService extends StatelessWidget {
   Widget build(BuildContext context) {
     var sendDataInfo = Provider.of<SendDataInfo>(context);
     return Scaffold(
+      backgroundColor: Colors.deepPurple,
       body: Card(
+        color: Colors.deepPurple,
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
@@ -56,7 +58,7 @@ class BackgroundService extends StatelessWidget {
               SizedBox(height: 40,),
               Text(
                 'serviço sendo executado em segundo plano...',
-                style: TextStyle(fontSize: 20,color: Colors.black54),
+                style: TextStyle(fontSize: 20,color: Colors.white),
 
               ),
               SizedBox(height: 20,),

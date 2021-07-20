@@ -44,7 +44,7 @@ class _OperatorWrapperState extends State<OperatorWrapper> {
   _decideAppBar(SendDataInfo info){
     return info.flag2Val == false ? AppBar(
       title: Text('MOTORISTA'),
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Colors.deepPurple,
       elevation: 0,
       actions: <Widget>[
         Padding(
@@ -62,7 +62,7 @@ class _OperatorWrapperState extends State<OperatorWrapper> {
     )
         : AppBar(
       title: Text('Enviando dados'),
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Colors.deepPurple,
       elevation: 0,
     );
   }

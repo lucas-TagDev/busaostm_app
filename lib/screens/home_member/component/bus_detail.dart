@@ -250,7 +250,7 @@ class _BusDetailState extends State<BusDetail> {
       iconHalte = d;
     });
     BitmapDescriptor.fromAssetImage(ImageConfiguration(devicePixelRatio: 2),
-        'assets/meMark.png')
+        'assets/meMark33.png')
         .then((d) {
       iconMe = d;
     });
@@ -422,7 +422,7 @@ class _BusDetailState extends State<BusDetail> {
                                                 Text(
                                                   _infoTracking == null ? '' : _infoTracking,
                                                   style: TextStyle(
-                                                    color: Colors.blueAccent,
+                                                    color: Colors.deepPurpleAccent,
                                                     fontSize: 25,
                                                   ),
                                                 ),
@@ -448,8 +448,8 @@ class _BusDetailState extends State<BusDetail> {
                                               padding: EdgeInsets.only(right: 12.0),
                                               decoration: new BoxDecoration(
                                                   border: new Border(
-                                                      right: new BorderSide(width: 2.0, color: Colors.blueAccent))),
-                                              child: Icon(Icons.directions_bus, color: Colors.blueAccent, size: 60,),
+                                                      right: new BorderSide(width: 2.0, color: Colors.deepPurpleAccent))),
+                                              child: Icon(Icons.directions_bus, color: Colors.deepPurpleAccent, size: 60,),
                                             ),
                                             title: Text(
                                               widget.bus.name,
